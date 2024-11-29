@@ -37,9 +37,8 @@ func (h *Heapsort) bubbleDown(index int) {
     if rightChildIndex < heapSize && h.heap[rightChildIndex] < h.heap[smallest] {
         smallest = rightChildIndex
     }
-    if smallest == index {
-        return
+    if smallest != index {
+        h.heap[smallest], h.heap[index] = h.heap[index], h.heap[smallest]
+        h.bubbleDown(smallest)
     }
-    h.heap[smallest], h.heap[index] = h.heap[index], h.heap[smallest]
-    h.bubbleDown(smallest)
 }
